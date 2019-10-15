@@ -1,0 +1,29 @@
+body {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    background-image: url("../images/purple-gradient-bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right center;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Staatliches', cursive;
+}
+
+.glow {
+    color: #FFFFFF;
+background: transparent;
+text-shadow: rgb(100, 100, 100) 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px,
+ #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+.bg-mia {
+    background-color: #200020;
+}
+
+.border-groove {
+    border: 3px double #40E6FF;
+border-radius: 10px;
+}
