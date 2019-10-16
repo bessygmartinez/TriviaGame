@@ -27,3 +27,7 @@ text-shadow: rgb(100, 100, 100) 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15p
     border: 3px double #40E6FF;
 border-radius: 10px;
 }
+
+#question-text {
+    display: none;
+}
