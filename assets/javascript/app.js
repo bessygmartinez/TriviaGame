@@ -45,7 +45,7 @@ $(document).ready(function () {
 		finished: "Here's how you did, bro."
     };
 
-    $("#currentQuestion").hide();
+    $("#message").hide();
     
     //Starts game when #start button clicked
     $("#start").on("click", function () {
@@ -53,8 +53,18 @@ $(document).ready(function () {
         $(this).hide();
         //miamiBass.play();
         startNewGame();
-        
     });
+
+    //Starts game over again when #resetGameBtn is clicked at the end
+    $("#resetGameBtn").on("click", function() {
+        $(this).hide();
+        $("#final-pic").hide();
+        $("#result-message").hide();
+        $("#correctAnswers").hide();
+        $("#incorrectAnswers").hide();
+        $("#unanswered").hide();
+        startNewGame();
+    })
 
     //-------------Timer functions-------------
     function timer() {
@@ -90,6 +100,7 @@ $(document).ready(function () {
         $("#notAnswered").empty();
         $("#answerImg").hide();
         $("#answer-text").hide();
+        $("#message").show();
         currentQuestion = 0;
         correctAnswers = 0;
         incorrectAnswers = 0;
@@ -107,7 +118,7 @@ $(document).ready(function () {
 
     //--------------Displays new question------------------
     $("#currentQuestion").html("Question " + (currentQuestion+1) + " of " + triviaQuestions.length);
-    $("#question-text").html(triviaQuestions[currentQuestion].question);
+    $("#question-text").html("<h2>" + triviaQuestions[currentQuestion].question + "</h2>");
 
     for (let i = 0; i <= 5; i++) {
         let choiceList = $("<div>");
@@ -143,33 +154,33 @@ $(document).ready(function () {
         $("#answerImg").html(newAnsImg);
 
         let imgCaption = triviaQuestions[currentQuestion].answerText;
-        newAnsCaption = $("<div>");
-        newAnsCaption.html(imgCaption);
+        newAnsCaption = $("<div class='mt-2'>");
+        newAnsCaption.html("<h2>" + imgCaption + "</h2>");
         newAnsCaption.addClass("imgCaption");
         $("#answer-text").html(newAnsCaption);
 
         if((userSelect == correctAnswerIndex) && (answered === true)){
             correctAnswers++;
-            $("#message").html(messages.correct);
+            $("#message").html("<h2>" + messages.correct + "</h2>");
         }
         else if ((userSelect != correctAnswerIndex) && (answered === true)){
             incorrectAnswers++;
-            $("#message").html(messages.incorrect);
+            $("#message").html("<h2>" + messages.incorrect + "</h2>");
             $("#actualAnswer").html("The correct answer was:<p>" + correctAnswerText + "</p>");
         }
         else {
             unanswered++;
-            $("#message").html(messages.timeUp);
+            $("#message").html("<h2>" + messages.timeUp + "</h2>");
             $("#actualAnswer").html("The correct answer was:<p>" + correctAnswerText + "</p>");
             answered = true;
         }
 
         if (currentQuestion == (triviaQuestions.length-1)){
-            setTimeout(scores, 6000);
+            setTimeout(scores, 5000);
         }
         else {
             currentQuestion++;
-            setTimeout(newQuestion, 6000);
+            setTimeout(newQuestion, 5000);
         }
     }
 
@@ -183,10 +194,17 @@ $(document).ready(function () {
         $("#answer-text").hide();
 
         $("#result-message").html(messages.finished);
+        $("#result-message").show();
         $("#correctAnswers").html("Te la comistes with " + correctAnswers + " right.");
+        $("#correctAnswers").show();
         $("#incorrectAnswers").html("You got " + incorrectAnswers + " wrong, man.");
+        $("#incorrectAnswers").show();
         $("#unanswered").html("You left " + unanswered + " hanging.");
-        $("#final-pic").html("<img src='assets/images/PitBull305.jpg' class='img-fluid border border-info' width='400'>")
+        $("#unanswered").show();
+        $("#final-pic").html("<img src='assets/images/PitBull305.jpg' class='img-fluid border border-info' width='400'>");
+        $("#final-pic").show();
+        $("#resetGameBtn").html("<button type='button' class='btn btn-info btn-lg mt-3'>Try Again!</button>");
+        $("#resetGameBtn").show();
 
 
     }
