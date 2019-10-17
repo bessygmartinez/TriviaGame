@@ -104,10 +104,13 @@ h1 {
         margin-right: 0;
     }
 
-    #fullcell{
+    #fullcell-gamearea {
         margin-left:0 !important;
         margin-right:0 !important;
     }
-
-
+    
+    #fullcell-welcome{
+        margin-left:0 !important;
+        margin-right:0 !important;
+    }
 }
