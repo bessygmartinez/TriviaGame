@@ -8,15 +8,19 @@ body {
     background-size: cover;
 }
 
+p {
+    font-size:20px;
+}
+
 h1 {
     font-family: 'Staatliches', cursive;
 }
 
 .glow {
     color: #FFFFFF;
-background: transparent;
-text-shadow: rgb(100, 100, 100) 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px,
- #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+    background: transparent;
+    text-shadow: rgb(100, 100, 100) 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px,
+    #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }
 
 .bg-mia {
@@ -25,9 +29,22 @@ text-shadow: rgb(100, 100, 100) 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15p
 
 .border-groove {
     border: 3px double #40E6FF;
-border-radius: 10px;
+    border-radius: 10px;
 }
 
-#question-text {
-    display: none;
+.thisChoice {
+    font-size: 25px;
+}
+
+.thisChoice:hover {
+    background-color: #40E6FF;
+    color: #Eb0075;
+    cursor: pointer;
+}
+
+#message {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #FF2D95;
+    color: white;
 }
