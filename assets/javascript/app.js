@@ -22,13 +22,62 @@ $(document).ready(function () {
         choices: ["Miami Sound Machine", "Pretty Ricky", "Against All Authority", "2 Live Crew"],
         answer: 3,
         photo: "assets/images/2LiveCrew.jpg",
-        answerText: "\"If it wasn't for 2 Live Crew, videos wouldn't look like they do and rappers wouldn't sound like they do.\""
-    }
+        answerText: "\"Words are just words.\" - Luther 'Uncle Luke' Cambpell"
+    },
+    {
+        question: "Which iconic restaurant offers Wing It Wednesdays & Joe's Meal Deals?",
+        choices: ["Chili's", "La Carreta", "Flanigan's", "Versailles"],
+        answer: 2,
+        photo: "assets/images/FlanigansRibRolls.jpg",
+        answerText: "Broooo, those rib rolls are FIRE."
+    },
+    {
+        question: "It's 3:05 p.m. on a weekday. What are we pouring around the workplace?",
+        choices: ["Cafecito", "Mimosas", "Beer", "Water"],
+        answer: 0,
+        photo: "assets/images/Cafecito.jpg",
+        answerText: "You gotta pinch the tip for a perfect pour."
+    },
+    {
+        question: "We all know that Cubans are the #1 Hispanic population in Miami, but who is #2?",
+        choices: ["Colombians", "Venezuelans", "Haitians", "Nicaraguans"],
+        answer: 3,
+        photo: "assets/images/FritangaNica.jpg",
+        answerText: "If you haven't eaten Fritanga yet, go get some!! ~Queso frito~"
+    },
+    {
+        question: "This quintessential Southerneastern supermaket chain opened up seven stores sub-branded 'Sabor' to cater to the large Hispanic population in Miami.",
+        choices: ["Aldi", "Publix", "Winn-Dixie", "Piggly Wiggly"],
+        answer: 1,
+        photo: "assets/images/PublixSabor.jpg",
+        answerText: "As long as you still have those delicious Publix subs, who cares what the name is."
+    },
+    {
+        question: "The unofficial motto of this Miami-Dade County city is 'Agua, Fango, y Factoría.'",
+        choices: ["Aventura", "Miami-Beach", "Hialeah", "Tamiami"],
+        answer: 2,
+        photo: "assets/images/Hialeah.jpg",
+        answerText: "Don't you ever dare confuse East Hialeah with West Hialeah."
+    },
+    {
+        question: "How many times have the Miami Dolphins won the SuperBowl?",
+        choices: ["1", "Never, bro", "3", "2"],
+        answer: 3,
+        photo: "assets/images/MiamiDolphins.jpg",
+        answerText: "1972 & 1973. Can you believe it? Don Shula is the man!"
+    },
+    {
+        question: "OMG! The Miami Heat and/or Dolphins and/or Marlins just won a championship (or Fidel just died)! Which of these is an essential celebratory noisemaker?",
+        choices: ["Fireworks", "Pots & Pans", "A whistle", "Clapping"],
+        answer: 1,
+        photo: "assets/images/MiamiFans.jpg",
+        answerText: "WE'RE GOING TO LA CARRETA!!!!"
+    },
 ]; 
 
     //Gets music for game
-    //const miamiBass = document.createElement("audio");
-    //miamiBass.setAttribute("src", "assets/sounds/2LiveCrew-HoochieMama.mp3");
+    const miamiBass = document.createElement("audio");
+    miamiBass.setAttribute("src", "assets/sounds/2LiveCrew-HoochieMama.mp3");
 
 	let currentQuestion; 
 	let correctAnswers; 
@@ -41,8 +90,8 @@ $(document).ready(function () {
 	let messages = {
 		correct: "Eso! You got it right, Pipo!",
 		incorrect: "Bro, what happened? That's wrong.",
-		timeUp: "Se acabo. Time's up.",
-		finished: "Here's how you did, bro."
+		timeUp: "La cagaste. Time's up.",
+		finished: "Ya se acabo. Here's your score:"
     };
 
     $("#message").hide();
@@ -51,7 +100,7 @@ $(document).ready(function () {
     $("#start").on("click", function () {
         $("#welcome").hide();
         $(this).hide();
-        //miamiBass.play();
+        miamiBass.play();
         startNewGame();
     });
 
@@ -118,13 +167,14 @@ $(document).ready(function () {
 
     //--------------Displays new question------------------
     $("#currentQuestion").html("Question " + (currentQuestion+1) + " of " + triviaQuestions.length);
+    $("#question-text").addClass("mt-1 mb-3 text-center");
     $("#question-text").html("<h2>" + triviaQuestions[currentQuestion].question + "</h2>");
 
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i <= 4; i++) {
         let choiceList = $("<div>");
         choiceList.text(triviaQuestions[currentQuestion].choices[i]);
         choiceList.attr({"data-index": i});
-        choiceList.addClass("thisChoice");
+        choiceList.addClass("thisChoice m-2 text-center");
         $("#choices-text").append(choiceList);
     }
 
@@ -140,7 +190,7 @@ $(document).ready(function () {
     function displayAnswer(){
         $("#currentQuestion").empty();
         $(".thisChoice").empty();
-        $(".question").empty();
+        $("#question-text").empty();
         $("#answerImg").show();
         $("#answer-text").show();
 
@@ -148,15 +198,15 @@ $(document).ready(function () {
         let correctAnswerIndex = triviaQuestions[currentQuestion].answer;
 
         let answerImgLink = triviaQuestions[currentQuestion].photo;
-        let newAnsImg = $("<img width='400' class='border border-info'>");
+        let newAnsImg = $("<img width='400' class='border border-info img-fluid'>");
         newAnsImg.attr("src", answerImgLink);
-        newAnsImg.addClass("answerImg");
+        newAnsImg.addClass("answerImg mt-2");
         $("#answerImg").html(newAnsImg);
 
         let imgCaption = triviaQuestions[currentQuestion].answerText;
-        newAnsCaption = $("<div class='mt-2'>");
+        newAnsCaption = $("<div class='mt-3'>");
         newAnsCaption.html("<h2>" + imgCaption + "</h2>");
-        newAnsCaption.addClass("imgCaption");
+        newAnsCaption.addClass("imgCaption mt-3 text-center");
         $("#answer-text").html(newAnsCaption);
 
         if((userSelect == correctAnswerIndex) && (answered === true)){
@@ -166,21 +216,21 @@ $(document).ready(function () {
         else if ((userSelect != correctAnswerIndex) && (answered === true)){
             incorrectAnswers++;
             $("#message").html("<h2>" + messages.incorrect + "</h2>");
-            $("#actualAnswer").html("The correct answer was:<p>" + correctAnswerText + "</p>");
+            $("#actualAnswer").html("The correct answer was:<br>" + correctAnswerText);
         }
         else {
             unanswered++;
             $("#message").html("<h2>" + messages.timeUp + "</h2>");
-            $("#actualAnswer").html("The correct answer was:<p>" + correctAnswerText + "</p>");
+            $("#actualAnswer").html("The correct answer was:<br>" + correctAnswerText);
             answered = true;
         }
 
         if (currentQuestion == (triviaQuestions.length-1)){
-            setTimeout(scores, 5000);
+            setTimeout(scores, 6000);
         }
         else {
             currentQuestion++;
-            setTimeout(newQuestion, 5000);
+            setTimeout(newQuestion, 6000);
         }
     }
 
@@ -193,20 +243,18 @@ $(document).ready(function () {
         $("#answerImg").hide();
         $("#answer-text").hide();
 
-        $("#result-message").html(messages.finished);
+        $("#result-message").html("<h3>" + messages.finished + "</h3>");
         $("#result-message").show();
-        $("#correctAnswers").html("Te la comistes with " + correctAnswers + " right.");
+        $("#correctAnswers").html("<h3>Que tremendo. You got " + correctAnswers + " right.</h3>");
         $("#correctAnswers").show();
-        $("#incorrectAnswers").html("You got " + incorrectAnswers + " wrong, man.");
+        $("#incorrectAnswers").html("<h3>La cagaste on " + incorrectAnswers + " of them.</h3>");
         $("#incorrectAnswers").show();
-        $("#unanswered").html("You left " + unanswered + " hanging.");
+        $("#unanswered").html("<h3>You left " + unanswered + " without answer.</h3>");
         $("#unanswered").show();
-        $("#final-pic").html("<img src='assets/images/PitBull305.jpg' class='img-fluid border border-info' width='400'>");
+        $("#final-pic").html("<img src='assets/images/PitBull305.jpg' class='img-fluid border border-info mt-3' width='400'>");
         $("#final-pic").show();
         $("#resetGameBtn").html("<button type='button' class='btn btn-info btn-lg mt-3'>Try Again!</button>");
         $("#resetGameBtn").show();
-
-
     }
 
 });
