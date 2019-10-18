@@ -1,7 +1,8 @@
 # MIAMI-DADE, BRO.
 ## The Trivia Game
 
-Are you Made in Dade? 3-0-5 'til you die? Cafesito in your veins? Prove it by taking this fun trivia quiz!
+Are you Made in Dade? 3-0-5 'til you die? Cafesito in your veins? Prove it by taking [this fun trivia quiz!](https://bessygmartinez.github.io/TriviaGame/)
+
 
 ![Image of Miami-Dade, Bro](https://raw.githubusercontent.com/bessygmartinez/TriviaGame/master/assets/images/MiamiDadeBro_ReadMe.jpg)
 
