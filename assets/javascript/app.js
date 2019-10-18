@@ -46,7 +46,7 @@ $(document).ready(function () {
         answerText: "If you haven't eaten Fritanga yet, go get some!! ~Queso frito~"
     },
     {
-        question: "This quintessential Southerneastern supermaket chain opened up seven stores sub-branded 'Sabor' to cater to the large Hispanic population in Miami.",
+        question: "This quintessential Southeastern supermaket chain opened up seven stores sub-branded 'Sabor' to cater to the large Hispanic population in Miami.",
         choices: ["Aldi", "Publix", "Winn-Dixie", "Piggly Wiggly"],
         answer: 1,
         photo: "assets/images/PublixSabor.jpg",
